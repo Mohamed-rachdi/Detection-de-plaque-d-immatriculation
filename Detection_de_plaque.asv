@@ -2,13 +2,13 @@ close all;
 clear all;
 
 
-%img = imread('Immatriculation/image2.png'); 
-img = imread('Immatriculation/image1.png');
+%img = imread('Immatriculation/image2.jpg'); 
+img = imread('Immatriculation/image1.jpg');
 imgray = rgb2gray(img);
 BW = im2bw(imgray);
 img = edge(imgray, 'prewitt');
 
-%Les étapes ci-dessous consistent à trouver l'emplacement de la plaque
+%Les Ã©tapes ci-dessous consistent Ã  trouver l'emplacement de la plaque
 %d'immatriculation
 Iprops=regionprops(bwlabel(img),'BoundingBox','Area', 'Image');
 area = Iprops.Area;
