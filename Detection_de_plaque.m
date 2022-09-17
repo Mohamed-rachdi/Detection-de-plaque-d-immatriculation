@@ -2,13 +2,13 @@ close all;
 clear all;
 
 
-%img = imread('Immatriculation/image2.png'); 
-img = imread('Immatriculation/image2.png');
+%img = imread('Immatriculation/image2.jpg'); 
+img = imread('Immatriculation/image2.jpg');
 imgray = rgb2gray(img);
 BW = im2bw(imgray);
 img = edge(imgray, 'prewitt');
 
-%Les étapes ci-dessous consistent à trouver l'emplacement de la plaque
+%Les Ã©tapes ci-dessous consistent Ã  trouver l'emplacement de la plaque
 %d'immatriculation
 Iprops=regionprops(bwlabel(img),'BoundingBox','Area', 'Image');
 area = Iprops.Area;
@@ -30,13 +30,13 @@ imshow(img);
 
 Iprops=regionprops(bwlabel(img),'BoundingBox','Area', 'Image'); %lire la lettre
 count = numel(Iprops);
-noPlate=[]; %Initialisation de la variable de la chaîne de la plaque d'immatriculation.
+noPlate=[]; %Initialisation de la variable de la chaÃ®ne de la plaque d'immatriculation.
 
 for i=1:count
    Ws = length(Iprops(i).Image(1,:));
    Hs = length(Iprops(i).Image(:,1));
    if Ws<(h/2) & Hs>(h/3)
-       letter=Detection_de_lettre(Iprops(i).Image); % Lecture de la lettre correspondant à l'image binaire 'N'.
-       noPlate=[noPlate letter] % Ajout de chaque caractère suivant dans la variable noPlate.
+       letter=Detection_de_lettre(Iprops(i).Image); % Lecture de la lettre correspondant Ã  l'image binaire 'N'.
+       noPlate=[noPlate letter] % Ajout de chaque caractÃ¨re suivant dans la variable noPlate.
    end
 end
